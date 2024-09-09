@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FashionHub - Trendy Clothing & Accessories</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="./images/clothes-shop.png">
+  </head>
+  <body id="body">
+    <section class="container">
+      <header class="nav-bar">
+        <nav>
+          <div class="logo">
+            <img src="./images/fashionHub logo.png" alt="FashionHub Logo">
+          </div>
+          <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <ul class="mobile-nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#shop">Shop</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="menu-hambuger">
+          <span class="hambuger"></span>
+        </div>
+      </header>
+
+      <section class="hero-sec">
+        <div class="hero-content">
+          <h1>Discover Your Unique Style</h1>
+          <p>Shop the latest trends in fashion with FashionHub.</p>
+          <a href="#shop" class="hero-btn">Shop Now</a>
+        </div>
+      </section>
+
+      <section class="about-sec" id="about">
+        <h1>About FashionHub</h1>
+        <p>FashionHub is dedicated to bringing you the latest in fashion and accessories. Our collection is curated with the modern trendsetter in mind, offering you the best of both style and comfort.</p>
+        <p>We believe in empowering our customers to express their unique style. Whether you're looking for casual wear, office attire, or something for a special occasion, FashionHub has got you covered.</p>
+      </section>
+
+      <section class="product-sec" id="shop">
+        <h2>Featured Products</h2>
+          <div id="product-container"></div>
+          <button class="btn" id="load-more-btn">Load More Products</button>
+      </section>
+
+      <section class="contact-sec" id="contact">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or need assistance, feel free to reach out to us:</p>
+        <p>Email: <a href="mailto:bethelndegonekwu@gmail.com">bethelndegonekwu@gmail.com</a></p>
+        <p>Phone: <a href="tel:+2349137201647">234+ 913 720 1647</a></p>
+        <p>Follow us on social media for the latest updates and fashion inspiration:</p>
+        <div class="social-icons">
+            <a href="#" aria-label="Facebook"><img src="./images/facebook-icon.png" alt="Facebook"></a>
+            <a href="#" aria-label="Instagram"><img src="./images/instagram-icon.png" alt="Instagram"></a>
+            <a href="#" aria-label="Twitter"><img src="./images/twitter-icon.png" alt="Twitter"></a>
+        </div>
+        <div class="newsletter-sec">
+            <h3>Subscribe to Our Newsletter</h3>
+            <p>Stay updated with our latest collections, exclusive offers, and fashion tips. Enter your email below to subscribe:</p>
+            <form action="submit-newsletter.php" method="POST">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+    
+
+      <footer class="footer">
+        <p>&copy; 2024 FashionHub. All Rights Reserved.</p>
+      </footer>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
