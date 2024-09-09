@@ -341,6 +341,9 @@ nav {
 }
 
 .contact-sec p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-size: 1.1em;
     color: #f1ecec;
     margin-bottom: 15px;
