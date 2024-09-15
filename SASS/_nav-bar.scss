@@ -1,0 +1,231 @@
+.nav-bar {
+    background-color: $white;
+    border-bottom: 1px solid #e0e0e0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 2;
+    transition: top 0.3s;
+    
+    nav {
+        @include flex-layout(space-between, center);
+        width: 100%;
+    }
+  
+    .logo img {
+        width: 150px;
+        height: auto;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+
+        @include mobile {
+            @include flex-layout(space-around, center);
+            flex-direction: column;
+            background: $primary-color;
+            width: 80%;
+            position: absolute;
+            margin: 80px auto;
+            top: -100rem;
+            right: 0;
+            left: 0;
+            height: 70vh;
+            list-style: none;
+            border-radius: 8px;
+            z-index: 3;
+            transition: all 0.5s ease-in-out;
+            box-shadow: $shadow;
+
+            li a {
+                background: $white;
+                padding: 10px 20px;
+                border-radius: 8px;
+
+                &:hover {
+                    background: $secondary-color;
+                    border: 2px dashed $dark-gray;
+                }
+            }
+
+            &.open {
+                top: 0;
+            }
+        }
+    }
+  
+    .nav-links li {
+        margin: 0 15px;
+    }
+  
+    .nav-links li a {
+        color: $dark-gray;
+        font-size: 1.1em;
+        padding: 5px 10px;
+        text-decoration: none;
+  
+        &:hover {
+            background-color: $primary-color;
+            color: $white;
+            border-radius: $border-radius;
+        }
+    }
+
+    #cart-icon {
+        filter: grayscale(100%) brightness(0%);
+        margin: 0 25px;
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    .cart-container {
+        @include flex-layout(space-around, center);
+        text-align: center;
+        flex-direction: column;
+        background-color: $dark-gray;
+        color: $white;
+        position: absolute;
+        top: -100rem;
+        right: 1rem;
+        width: 300px;
+        height: 500px;
+        padding: 20px 10px;
+        margin-top: 5rem;
+        border-radius: 8px;
+        box-shadow: $shadow;
+        transition: all 0.5s ease-in-out;
+        overflow: auto;
+        z-index: 7;
+
+        @include mobile {
+            width: 100%;
+            height: 100vh;
+            right: 0;
+            border-radius: 0;
+            margin-top: 0;
+        }
+
+        button {
+            background-color: $primary-color;
+            color: $white;
+            font-size: 1.1em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: $border-radius;
+            margin-bottom: 10px;
+            text-decoration: none;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $secondary-color;
+            }
+        }
+
+        .cart-close {
+            display: none;
+            font-size: 1.5em;
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            border-radius: 50px;
+            padding: 2px 9px;
+
+            @include mobile {
+                display: block;
+            }
+
+            // &.close-cart {
+            //     top: -100rem;
+            // }
+        }
+
+        #push-container {
+            width: 100%;
+            text-align: center;
+            border: 1px dashed $white;
+            border-radius: 20px;
+
+            img {
+                width: 90%;
+                height: 90%;
+                border-radius: 10px;
+                margin-top: 10px;
+            }
+        }
+
+        .cart-price {
+            text-align: center;
+            margin-top: 20px;
+    
+            span {
+                font-weight: 600;
+            }
+        }
+    }
+
+    .menu-hambuger {
+        display: none;
+        position: absolute;
+        background: inherit;
+        right: 1rem;
+        top: 0.7rem;
+        cursor: pointer;
+        z-index: 5;
+
+        @include mobile {
+            display: block;
+        }
+
+        .hambuger {
+            position: absolute;
+            right: 0.8rem;
+            top: 1.5rem;
+            width: 28px;
+            height: 2px;
+            background: $black;
+            transition: all 0.5s ease-in-out;
+
+            &::before {
+                content: '';
+                position: absolute;
+                background: $black;
+                width: 28px;
+                height: 2px;
+                top: -8px;
+                transition: all 0.5s ease-in-out;
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                background: $black;
+                width: 28px;
+                height: 2px;
+                top: 8px;
+                right: 0;
+                transition: all 0.5s ease-in-out;
+            }
+
+            &.open {
+                transform: rotate(45deg);
+
+                &::before {
+                    transform: rotate(90deg);
+                    top: 0;
+                }
+
+                &::after {
+                    width: 22px;
+                    background: transparent;
+                    top: 0;
+                }
+            }
+        }
+    }
+}
+  

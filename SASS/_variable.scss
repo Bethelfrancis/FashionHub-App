@@ -1,0 +1,22 @@
+$white: #fff;
+$black: #000;
+$primary-color: #03dac6;
+$secondary-color: #00c4b4;
+$light-gray: #f5f5f5;
+$dark-gray: #333;
+$shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+$border-radius: 4px;
+$mobile: 650px;
+$mobile-size: 650px;
+
+@mixin flex-layout($justify, $align) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin mobile {
+    @media (max-width: $mobile) {
+        @content;
+    };
+};

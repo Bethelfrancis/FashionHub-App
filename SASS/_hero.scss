@@ -1,0 +1,56 @@
+.hero-sec {
+    @include flex-layout(center, center);
+    background-image: url(../hero-background.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 600px;
+    color: $primary-color;
+    text-align: center;
+    margin: 90px 0 40px 0;
+    border-radius: 8px;
+  
+    .hero-content {
+      h1, p, .hero-btn {
+          animation: slideIn 2s ease-out;
+      }
+  
+      h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+  
+      p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+      }
+  
+      .hero-btn {
+        background-color: $primary-color;
+        color: $white;
+        font-size: 1.1em;
+        padding: 10px 20px;
+        border: none;
+        border-radius: $border-radius;
+        text-decoration: none;
+        cursor: pointer;
+  
+        &:hover {
+          background-color: $secondary-color;
+        }
+      }
+    }
+}
+ 
+
+@keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+} 

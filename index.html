@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FashionHub - Trendy Clothing & Accessories</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="dsit/css/main.css" />
     <link rel="icon" href="./images/clothes-shop.png">
   </head>
-  <body id="body">
+  <body>
     <section class="container">
       <header class="nav-bar">
         <nav>
@@ -16,18 +16,30 @@
             <img src="./images/fashionHub logo.png" alt="FashionHub Logo">
           </div>
           <ul class="nav-links">
-            <li><a href="#">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#shop">Shop</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li class="nav-link-btn"><a href="#">Home</a></li>
+            <li class="nav-link-btn"><a href="#about">About Us</a></li>
+            <li class="nav-link-btn"><a href="#shop">Shop</a></li>
+            <li class="nav-link-btn"><a href="#contact">Contact</a></li>
+            <img 
+              src="./images/cart-icon.png" 
+              alt="cart-icon"
+              id="cart-icon"
+            />
           </ul>
         </nav>
-        <ul class="mobile-nav-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#shop">Shop</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+        <div class="cart-container" id="cart-container">
+          <button class="cart-close" aria-label="Close Cart">&times;</button>
+          <button class="btn" id="clear-cart-btn">Clear Cart</button>
+          <div id="push-container">
+              
+          </div>
+          <div class="cart-price">
+              <p>Total number of items: <span id="total-items">0</span></p>
+              <p>Subtotal: <span id="subtotal">$0</span></p>
+              <p>Taxes: <span id="taxes">$0</span></p>
+              <p>Total: <span id="total">$0</span></p>
+          </div>
+        </div>
         <div class="menu-hambuger">
           <span class="hambuger"></span>
         </div>

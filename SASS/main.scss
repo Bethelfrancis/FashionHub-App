@@ -1,0 +1,14 @@
+@import './reset';
+@import './variable';
+@import './nav-bar';
+@import './hero';
+@import './about';
+@import './product';
+@import './contact';
+@import './footer';
+
+@include mobile {
+    body {
+        font-size: 1.2em;
+    }
+}
