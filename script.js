@@ -133,7 +133,7 @@ class ShoppingCart {
       <div class="product-display" id="${id}">
           <img src="${image}" alt="${title}-image">
           <h3>${title}</h3>
-          <h4>${price}</h4>
+          <h4>$${price}</h4>
       </div>
     `;
   }
