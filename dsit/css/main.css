@@ -95,6 +95,26 @@ body {
 .nav-bar #cart-icon:hover {
   transform: scale(1.1);
 }
+.nav-bar #count {
+  position: absolute;
+  right: 1.3rem;
+  top: 0.9rem;
+  font-size: 0.8rem;
+  text-align: center;
+  background-color: #03dac6;
+  color: #333;
+  width: 16px;
+  height: 16px;
+  border-radius: 50px;
+}
+@media (max-width: 650px) {
+  .nav-bar #count {
+    background-color: #333;
+    color: #fff;
+    right: 8.3rem;
+    top: 25.4rem;
+  }
+}
 .nav-bar .cart-container {
   display: flex;
   justify-content: space-around;
@@ -109,12 +129,18 @@ body {
   width: 300px;
   height: 500px;
   padding: 20px 10px;
-  margin-top: 5rem;
+  margin-top: 60px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease-in-out;
   overflow: auto;
-  z-index: 7;
+  z-index: 6;
+}
+.nav-bar .cart-container.open-cart {
+  top: 0;
+}
+.nav-bar .cart-container.close-cart {
+  top: -100rem;
 }
 @media (max-width: 650px) {
   .nav-bar .cart-container {
@@ -225,6 +251,10 @@ body {
   width: 22px;
   background: transparent;
   top: 0;
+}
+
+.no-scroll {
+  overflow: hidden;
 }
 
 .hero-sec {

@@ -9,6 +9,12 @@ const cartIcon = document.getElementById('cart-icon');
 const cartContainer = document.getElementById('cart-container');
 const closeCartBtn = document.querySelector('.cart-close');
 const pushContainer = document.getElementById('push-container');
+const totalCartProduct = document.getElementById('total-items');
+const cartCount = document.getElementById('count');
+const cartSubTotal = document.getElementById('subtotal');
+const taxes = document.getElementById('taxes');
+const cartTotal = document.getElementById('total');
+const clearCartBtn = document.getElementById('clear-cart-btn');
 
 let lastScrollTop = 0;
 
@@ -35,28 +41,31 @@ window.addEventListener('scroll', checkVisibility);
 checkVisibility();
 
 cartIcon.addEventListener('click', () => {
-  cartContainer.style.top = '0'
+  cartContainer.classList.remove('close-cart')
+  cartContainer.classList.toggle('open-cart')
 })
 
-// document.addEventListener('click', (e) => {
-//   if (!cartContainer.contains(e.target) && !cartIcon.contains(e.target)) {
-//     cartContainer.style.top = '-100rem'
-//   }
-// });
-
 closeCartBtn.addEventListener('click', () => {
-  cartContainer.style.top = '-100rem'
+  cartContainer.classList.remove('open-cart')
+  cartContainer.classList.toggle('close-cart')
 })
 
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('open');
   mobileNav.classList.toggle('open');
+
+  if (mobileNav.classList.contains('open')) {
+    document.body.classList.add('no-scroll')
+  } else {
+    document.body.classList.remove('no-scroll')
+  }
 });
 
 mobileBtn.forEach(btn => {
   btn.addEventListener('click', () => {
     hamburger.classList.remove('open');
     mobileNav.classList.remove('open');
+    document.body.classList.remove('no-scroll');
   });
 });
 
@@ -97,7 +106,7 @@ const displayProducts = (product) => {
             id="category-img"
         />
         <button class="pro-shop-now">Shop Now</button>
-        <h3>${title.length > 20 ? title.slice(0, 20) + '...' : title}</h3>
+        <h3>${title.length > 40 ? title.slice(0, 20) + '...' : title}</h3>
         <div class="categorys-price">
             <h4><span id="category-price">Price:</span>$${price}</h4>
         </div>
@@ -111,6 +120,9 @@ const displayProducts = (product) => {
     btn.addEventListener('click', (e) => {
       const productId = Number(e.target.closest('.category-product').id);
       cart.addItems(productId, productDataArr);
+      totalCartProduct.textContent = cart.getCount();
+      cartCount.textContent = cart.getCount();
+      cart.calculateAmount();
     })
   })
 };
@@ -120,7 +132,7 @@ loadMoreBtn.addEventListener('click', fetchMoreProducts);
 class ShoppingCart {
   constructor() {
     this.items = [];
-    this.tax = 5;
+    this.tax = 3;
     this.total = 0
   }
 
@@ -129,14 +141,71 @@ class ShoppingCart {
     const { image, title, price } = product;
     this.items.push(product);
 
-    pushContainer.innerHTML += `
-      <div class="product-display" id="${id}">
-          <img src="${image}" alt="${title}-image">
-          <h3>${title}</h3>
-          <h4>$${price}</h4>
-      </div>
-    `;
+    const countPerProduct = {}
+    this.items.forEach(product => {
+      countPerProduct[product.id] = (countPerProduct[product.id] || 0) + 1;
+    })
+
+    const currentProduct = countPerProduct[product.id];
+    const currentSpanProduct = document.getElementById(`per-product-${id}`);
+
+    if (currentProduct > 1) {
+      currentSpanProduct.textContent = `${currentProduct}x`;
+    } else {
+      pushContainer.innerHTML += `
+          <div class="product-display" id="${id}">
+              <img src="${image}" alt="${title}-image">
+              <h3>
+                <span id="per-product-${id}" style="color: #03dac6"></span> 
+                ${title.length > 40 ? title.slice(0, 40) + '...' : title}
+              </h3>
+              <h4>$${price}</h4>
+          </div>
+        `
+    }
+  }
+
+  getCount() {
+    return this.items.length;
+  }
+
+  clearCart() {
+    if (!this.items.length) {
+      alert('Cart is already empty');
+      return;
+    }
+
+    const confirmClear = confirm('Are you sure you want to clear the cart!');
+
+    if (confirmClear) {
+      this.items = [];
+      this.total = 0;
+      pushContainer.innerHTML = ''
+      cartSubTotal.textContent = 0;
+      taxes.textContent = 0;
+      cartTotal.textContent = 0;
+      totalCartProduct.textContent = 0;
+      cartCount.textContent = 0;
+    } 
+  }
+
+  calculateTax(amount) {
+    return parseFloat(((this.tax / 100) * amount).toFixed(2));
+  }
+
+  calculateAmount() {
+    const subTotal = this.items.reduce((total, item) => total + item.price, 0);
+    const tax = this.calculateTax(subTotal)
+    this.total = subTotal + tax;
+    cartSubTotal.textContent = `$${subTotal.toFixed(2)}`;
+    taxes.textContent = `$${tax.toFixed(2)}`
+    cartTotal.textContent = `$${this.total.toFixed(2)}`;
+    return this.total;
   }
 }
+
+clearCartBtn.addEventListener('click', () => {
+  cart.clearCart()
+})
 
 const cart = new ShoppingCart;
